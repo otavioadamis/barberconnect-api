@@ -21,7 +21,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/cadastro")
-    public ResponseEntity<LoginResponseDTO> cadastrarUsuario(@RequestBody @Valid SignupRequestDTO novoUsuario){
+    public ResponseEntity<LoginResponseDTO> cadastrar(@RequestBody @Valid SignupRequestDTO novoUsuario){
         LoginResponseDTO response = _usuarioService.cadastrarUsuario(novoUsuario);
         return ResponseEntity.ok(response);
     }

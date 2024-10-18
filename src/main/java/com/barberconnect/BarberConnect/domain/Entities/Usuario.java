@@ -1,5 +1,6 @@
 package com.barberconnect.BarberConnect.domain.Entities;
 
+import com.barberconnect.BarberConnect.domain.Enums.Role;
 import com.barberconnect.BarberConnect.domain.TOs.UsuarioTOs.Request.SignupRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,7 @@ public class Usuario implements UserDetails {
     private String contato;
     @CreationTimestamp
     private Date criadoEm;
+    private Role tipo;
 
     public Usuario(SignupRequestDTO novoUsuario, String encodedPassword){
         nome = novoUsuario.nome();
@@ -41,7 +43,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return List.of(new SimpleGrantedAuthority(tipo.name()));
     }
 
     @Override
