@@ -32,7 +32,8 @@ public class Usuario implements UserDetails {
     private String contato;
     @CreationTimestamp
     private Date criadoEm;
-    private Role tipo;
+    @Enumerated(EnumType.STRING)
+    private Role tipo = Role.ROLE_CLIENTE;
 
     public Usuario(SignupRequestDTO novoUsuario, String encodedPassword){
         nome = novoUsuario.nome();
