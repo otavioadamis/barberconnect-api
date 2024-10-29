@@ -1,5 +1,6 @@
 package com.barberconnect.BarberConnect.domain.Entities;
 
+import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Request.CreateReservaRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,8 +26,15 @@ public class Reserva {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Usuario cliente; //Pode ser nulo (ou seja, horario disponível)
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "servico_id")
-    private Set<Servico> servico; //Pode ser nulo (ou seja, horario disponível)
+    private Servico servico; //Pode ser nulo (ou seja, horario disponível)
     private Date dataHora;
+
+    public Reserva(CreateReservaRequest novaReserva, Usuario usuarioLogado, Usuario funcionarioEscolhido, Servico servicoEscolhido) {
+        funcionario = funcionarioEscolhido;
+        cliente = usuarioLogado;
+        servico = servicoEscolhido;
+        dataHora = novaReserva.diaHorario();
+    }
 }

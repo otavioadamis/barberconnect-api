@@ -35,22 +35,15 @@ public class UsuarioService implements IUsuarioService {
 
     @Override
     public LoginResponseDTO cadastrarUsuario(SignupRequestDTO novoUsuario) {
-        UserDetails checkEmail = _usuarioRepo.findByEmail(novoUsuario.email());
-        if(checkEmail != null) {
-            throw new IllegalArgumentException("Este email já está cadastrado no sistema.");
-        }
-
-        String encryptedPassword = _passwordEncoder.encode(novoUsuario.senha());
-        Usuario usuario = new Usuario(novoUsuario, encryptedPassword);
-
-        _usuarioRepo.save(usuario);
+        Usuario usuario = SalvarUsuario(novoUsuario);
         String authToken = _authService.createToken(usuario);
 
         UsuarioDTO usuarioResponse = new UsuarioDTO(
                 usuario.getId(),
                 usuario.getNome(),
                 usuario.getEmail(),
-                usuario.getContato()
+                usuario.getContato(),
+                usuario.getTipo().name()
         );
         return new LoginResponseDTO(
                 authToken,
@@ -73,11 +66,25 @@ public class UsuarioService implements IUsuarioService {
                 usuario.getId(),
                 usuario.getNome(),
                 usuario.getEmail(),
-                usuario.getContato()
+                usuario.getContato(),
+                usuario.getTipo().name()
         );
         return new LoginResponseDTO(
                 authToken,
                 usuarioResponse
         );
+    }
+
+    public Usuario SalvarUsuario(SignupRequestDTO novoUsuario){
+        UserDetails checkEmail = _usuarioRepo.findByEmail(novoUsuario.email());
+        if(checkEmail != null) {
+            throw new IllegalArgumentException("Este email já está cadastrado no sistema.");
+        }
+
+        String encryptedPassword = _passwordEncoder.encode(novoUsuario.senha());
+        Usuario usuario = new Usuario(novoUsuario, encryptedPassword);
+
+        _usuarioRepo.save(usuario);
+        return usuario;
     }
 }
