@@ -50,7 +50,8 @@ public class UsuarioService implements IUsuarioService {
                 usuario.getId(),
                 usuario.getNome(),
                 usuario.getEmail(),
-                usuario.getContato()
+                usuario.getContato(),
+                usuario.getTipo()
         );
         return new LoginResponseDTO(
                 authToken,
@@ -73,7 +74,8 @@ public class UsuarioService implements IUsuarioService {
                 usuario.getId(),
                 usuario.getNome(),
                 usuario.getEmail(),
-                usuario.getContato()
+                usuario.getContato(),
+                usuario.getTipo()
         );
         return new LoginResponseDTO(
                 authToken,
