@@ -17,8 +17,7 @@ public class ServicoService {
         _servicoRepo = servicoRepository;
     }
 
-    public List<ServicoResponseDTO> listarServicosByServicoId(String barbeariaId){
+    public List<ServicoResponseDTO> listarServicosByBarbeariaId(String barbeariaId){
         return _servicoRepo.findAllServicosByBarbeariaId(barbeariaId);
     }
-
 }
