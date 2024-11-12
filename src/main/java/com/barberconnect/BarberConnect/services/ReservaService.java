@@ -6,6 +6,7 @@ import com.barberconnect.BarberConnect.dao.Repositories.UsuarioRepository;
 import com.barberconnect.BarberConnect.domain.Entities.Reserva;
 import com.barberconnect.BarberConnect.domain.Entities.Servico;
 import com.barberconnect.BarberConnect.domain.Entities.Usuario;
+import com.barberconnect.BarberConnect.domain.Interfaces.IReservaService;
 import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Request.CreateReservaRequest;
 import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Response.ReservaResponse;
 import org.springframework.security.core.Authentication;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class ReservaService {
+public class ReservaService implements IReservaService {
     private final ReservaRepository _reservaRepo;
     private final UsuarioRepository _userRepo;
     private final ServicoRepository _servicoRepo;

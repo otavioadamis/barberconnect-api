@@ -1,4 +1,7 @@
 package com.barberconnect.BarberConnect.domain.TOs.FuncionarioTOs.Response;
 
-public class FuncionarioResponseDTO {
+public record FuncionarioResponseDTO (
+        String funcionarioId,
+        String funcionarioNome
+){
 }
