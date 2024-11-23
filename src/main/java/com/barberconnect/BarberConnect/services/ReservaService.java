@@ -9,11 +9,13 @@ import com.barberconnect.BarberConnect.domain.Entities.Usuario;
 import com.barberconnect.BarberConnect.domain.Interfaces.IReservaService;
 import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Request.CreateReservaRequest;
 import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Response.ReservaResponse;
+import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Response.ReservasOcupadasResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class ReservaService implements IReservaService {
@@ -28,7 +30,8 @@ public class ReservaService implements IReservaService {
 
     public ReservaResponse CriarReserva(CreateReservaRequest novaReserva){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Usuario usuarioLogado = (Usuario) authentication.getPrincipal();
+        String loggedInUserEmail = authentication.getName();
+        Usuario usuarioLogado = (Usuario) _userRepo.findByEmail(loggedInUserEmail);
 
         Usuario funcionarioEscolhido = _userRepo.findById(novaReserva.funcionarioId())
                 .orElseThrow(() -> new IllegalArgumentException("Funcionario não encontrado"));
@@ -49,5 +52,10 @@ public class ReservaService implements IReservaService {
                 servicoEscolhido.getNome(),
                 reserva.getDataHora()
         );
+    }
+
+    public List<ReservasOcupadasResponse> getHorariosReservadosByFuncionarioIdAndDia(LocalDate dia, String funcionarioId){
+        LocalDate endDate = dia.plusDays(1);
+        return _reservaRepo.findReservasByFuncIdAndDia(funcionarioId, dia, endDate);
     }
 }

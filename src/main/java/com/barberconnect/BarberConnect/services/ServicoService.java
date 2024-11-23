@@ -23,6 +23,6 @@ public class ServicoService implements IServicoService {
     }
 
     public List<ServicoResponseDTO> listarServicosByFuncionarioId(String funcionarioId){
-        return null;
+        return _servicoRepo.findAllServicosByFuncionarioId(funcionarioId);
     }
 }

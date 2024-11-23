@@ -1,0 +1,7 @@
+"id","nome","descricao","tempo_medio","preco","barbearia_id"
+bd790d75-c823-4428-94c7-46fd6442ee87,Barba,Fazemos sua barba do jeito que voce pedir,25,49.90,"11f3e8a1-4615-4b3a-9c1f-192f9907ca81"
+"36fea715-5203-4e0e-b812-f10a893bf383",Barba e Cabelo,Pacote completo barba e cabelo!,50,79.90,"11f3e8a1-4615-4b3a-9c1f-192f9907ca81"
+"5700a564-e988-4bbf-997a-25019c74a186",Barba,Barba bem feita!,25,39.90,fbbe8740-565a-427a-ad4b-8edeedfe131c
+a7e450a8-a1c4-4c95-b0bc-56db0eb34f8d,Barba e Cabelo,Barba e cabelo!!!,50,69.90,fbbe8740-565a-427a-ad4b-8edeedfe131c
+"1",Cabelo,Cabelo feminino da forma que você quiser!,30,49.90,saloon
+"2",Unhas,Fazemos suas unhas com cuidado!,30,39.90,saloon

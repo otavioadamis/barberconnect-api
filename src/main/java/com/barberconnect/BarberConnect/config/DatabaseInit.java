@@ -19,23 +19,23 @@ public class DatabaseInit {
         if (count == 0) {
             jdbcTemplate.execute(
                     "COPY barbearia(id, nome, bairro, rua, numero) " +
-                            "FROM '/data/barbearia_v1.csv' DELIMITER ',' CSV HEADER;"
-            );
-            jdbcTemplate.execute(
-                    "COPY funcionario_barbearia(barbearia_id, funcionario_id) " +
-                            "FROM '/data/funcionario_barbearia_v1.csv' DELIMITER ',' CSV HEADER;"
-            );
-            jdbcTemplate.execute(
-                    "COPY funcionario_servico(servico_id, funcionario_id) " +
-                            "FROM '/data/funcionario_servico_v1.csv' DELIMITER ',' CSV HEADER;"
-            );
-            jdbcTemplate.execute(
-                    "COPY servico(id, nome, descricao, tempo_medio, preco, barbearia_id) " +
-                            "FROM '/data/servico_v1.csv' DELIMITER ',' CSV HEADER;"
+                            "FROM '/data/barbearia_v2.csv' DELIMITER ',' CSV HEADER;"
             );
             jdbcTemplate.execute(
                     "COPY usuario(id, nome, email, senha, contato, criado_em, tipo) " +
-                            "FROM '/data/usuario_v1.csv' DELIMITER ',' CSV HEADER;"
+                            "FROM '/data/usuario_v2.csv' DELIMITER ',' CSV HEADER;"
+            );
+            jdbcTemplate.execute(
+                    "COPY servico(id, nome, descricao, tempo_medio, preco, barbearia_id) " +
+                            "FROM '/data/servico_v2.csv' DELIMITER ',' CSV HEADER;"
+            );
+            jdbcTemplate.execute(
+                    "COPY funcionario_barbearia(barbearia_id, funcionario_id) " +
+                            "FROM '/data/funcionario_barbearia_v2.csv' DELIMITER ',' CSV HEADER;"
+            );
+            jdbcTemplate.execute(
+                    "COPY funcionario_servico(servico_id, funcionario_id) " +
+                            "FROM '/data/funcionario_servico_v2.csv' DELIMITER ',' CSV HEADER;"
             );
         }
     }

@@ -4,6 +4,7 @@ import com.barberconnect.BarberConnect.domain.Interfaces.IServicoService;
 import com.barberconnect.BarberConnect.domain.TOs.ServicoTOs.Response.ServicoResponseDTO;
 import com.barberconnect.BarberConnect.services.ServicoService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ public class ServicoController {
         _servicoService = servicoService;
     }
 
+    @GetMapping("/{funcionarioId}")
     public ResponseEntity<List<ServicoResponseDTO>> listarServicosByFuncionarioId(@PathVariable String funcionarioId){
         List<ServicoResponseDTO> response = _servicoService.listarServicosByFuncionarioId(funcionarioId);
         return ResponseEntity.ok(response);

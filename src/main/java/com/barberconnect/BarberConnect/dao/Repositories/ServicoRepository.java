@@ -18,11 +18,23 @@ public interface ServicoRepository extends JpaRepository<Servico, String> {
             value = "SELECT s.id as servicoId, " +
                     "s.nome as nomeServico, " +
                     "s.descricao as descricaoServico, " +
-                    "s.tempoMedio as tempoMedioMin, " +
+                    "s.tempo_medio as tempoMedioMin, " +
                     "s.preco as precoServico " +
                     "FROM servico s " +
                     "WHERE s.barbearia_id = :barbeariaId",
             nativeQuery = true
     )
     List<ServicoResponseDTO> findAllServicosByBarbeariaId(@Param("barbeariaId") String barbeariaId);
+    @Query(
+            value = "SELECT s.id as servicoId, " +
+                    "s.nome as nomeServico, " +
+                    "s.descricao as descricaoServico, " +
+                    "s.tempo_medio as tempoMedioMin, " +
+                    "s.preco as precoServico " +
+                    "FROM servico s " +
+                    "JOIN funcionario_servico fs ON s.id = fs.servico_id " +
+                    "WHERE fs.funcionario_id = :funcionarioId",
+            nativeQuery = true
+    )
+    List<ServicoResponseDTO> findAllServicosByFuncionarioId(@Param("funcionarioId") String funcionarioId);
 }

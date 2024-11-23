@@ -38,7 +38,11 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/api/usuario/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/usuario/cadastro").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/reserva/criar-reserva").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/reserva/criar-reserva").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/reserva/{funcionarioId}/{dia}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/servico/{funcionarioId}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/funcionario/{barbeariaId}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/barbearia/listar-barbearias").permitAll()
                         .requestMatchers("/v3/api-docs/**", "swagger-ui/**", "swagger-ui.html", "swagger/index.html").permitAll()
                         .anyRequest().authenticated()
                 )

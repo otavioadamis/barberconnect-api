@@ -19,7 +19,7 @@ public class AuthenticationService implements IAuthenticationService {
         try{
             Algorithm algorithm = Algorithm.HMAC256("o-medo-de-todas-as-verdades-abundantes");
             return JWT.create()
-                    .withIssuer("Meditrack-api")
+                    .withIssuer("barberconnect-api")
                     .withSubject(usuario.getId())
                     .withExpiresAt(generateExpirationDate())
                     .sign(algorithm);
