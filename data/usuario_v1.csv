@@ -1,0 +1,6 @@
+"id","nome","email","senha","contato","criado_em","tipo"
+"85efa8f7-8458-4b2a-a22e-1fa43315e06a",teste1,teste1,$2a$10$8pvb1CNPRjxInF2ELaBfW.mfNavdI3uWRtuiPRH/OfEgO0LymyOVe,"1234",2024-10-14 23:47:25.564,ROLE_CLIENTE
+c4ae029e-1073-458c-bf68-4d243cb72d27,Otavio,Otavio@otavio.com,$2a$10$AJe60KJACmP37zIwn1PoBeI9dwSg/VLfUpMphijE6JA.G6CriMEZe,"313131",2024-10-15 00:32:26.894,ROLE_CLIENTE
+"47d6be8d-c9e3-4bf4-b24a-83f6ee35e18e",AlexFuncionario,alex@funcionario.com,$2a$10$8pvb1CNPRjxInF2ELaBfW.mfNavdI3uWRtuiPRH/OfEgO0LymyOVe,"999999",2024-10-29 22:58:31.176,ROLE_FUNCIONARIO
+e2e9a6e7-b254-437e-b827-b7ff191f44ed,LucasFuncionario,lucas@funcionario.com,$2a$10$8pvb1CNPRjxInF2ELaBfW.mfNavdI3uWRtuiPRH/OfEgO0LymyOVe,"999999",2024-10-29 23:00:22.418,ROLE_FUNCIONARIO
+eb1e74ee-1b85-418e-9f41-98041e6ec4b4,cliente,cliente@email.com,$2a$10$8pvb1CNPRjxInF2ELaBfW.mfNavdI3uWRtuiPRH/OfEgO0LymyOVe,"8599985",2024-10-29 23:14:33.604,ROLE_CLIENTE

@@ -1,5 +1,6 @@
 package com.barberconnect.BarberConnect.domain.Entities;
 
+import com.barberconnect.BarberConnect.domain.TOs.ServicoTOs.Request.CreateServicoRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,4 +29,15 @@ public class Servico {
                 joinColumns = @JoinColumn(name = "servico_id"),
                 inverseJoinColumns = @JoinColumn(name = "funcionario_id"))
     private Set<Usuario> funcionarios;
+    @ManyToOne
+    @JoinColumn(name = "barbearia_id")
+    private Barbearia barbearia;
+
+    public Servico(CreateServicoRequest novoServico, Set<Usuario> funcionarios){
+        nome = novoServico.nome();
+        descricao = novoServico.descricao();
+        tempoMedio = novoServico.tempoMedioMin();
+        preco = novoServico.valor();
+        this.funcionarios.addAll(funcionarios);
+    }
 }
