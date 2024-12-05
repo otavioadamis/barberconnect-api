@@ -22,16 +22,16 @@ public class DatabaseInit {
                             "FROM '/data/barbearia_v2.csv' DELIMITER ',' CSV HEADER;"
             );
             jdbcTemplate.execute(
-                    "COPY usuario(id, nome, email, senha, contato, criado_em, tipo) " +
+                    "COPY usuario(id, nome, email, senha, contato, criado_em, tipo, barbearia_id) " +
                             "FROM '/data/usuario_v2.csv' DELIMITER ',' CSV HEADER;"
+            );
+            jdbcTemplate.execute(
+                    "COPY usuario(id, nome, email, senha, contato, criado_em, tipo) " +
+                            "FROM '/data/usuario_comum_v1.csv' DELIMITER ',' CSV HEADER;"
             );
             jdbcTemplate.execute(
                     "COPY servico(id, nome, descricao, tempo_medio, preco, barbearia_id) " +
                             "FROM '/data/servico_v2.csv' DELIMITER ',' CSV HEADER;"
-            );
-            jdbcTemplate.execute(
-                    "COPY funcionario_barbearia(barbearia_id, funcionario_id) " +
-                            "FROM '/data/funcionario_barbearia_v2.csv' DELIMITER ',' CSV HEADER;"
             );
             jdbcTemplate.execute(
                     "COPY funcionario_servico(servico_id, funcionario_id) " +
