@@ -23,9 +23,4 @@ public class Barbearia {
     private String bairro;
     private String rua;
     private BigInteger numero;
-    @OneToMany()
-    @JoinTable(name = "funcionario_barbearia",
-            joinColumns = @JoinColumn(name = "barbearia_id"),
-            inverseJoinColumns = @JoinColumn(name = "funcionario_id"))
-    private Set<Usuario> funcionarios;
 }

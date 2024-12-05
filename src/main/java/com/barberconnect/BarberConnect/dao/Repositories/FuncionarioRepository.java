@@ -14,8 +14,7 @@ public interface FuncionarioRepository extends JpaRepository<Usuario, String> {
             value = "SELECT f.id AS funcionarioId, " +
                     "f.nome AS funcionarioNome " +
                     "FROM usuario f " +
-                    "JOIN funcionario_barbearia fb ON f.id = fb.funcionario_id " +
-                    "WHERE fb.barbearia_id = :barbeariaId",
+                    "WHERE f.barbearia_id = :barbeariaId and f.tipo = 'ROLE_FUNCIONARIO'",
             nativeQuery = true
     )
     List<FuncionarioResponseDTO> getAllByBarbeariaId(@Param("barbeariaId") String barbeariaId);
