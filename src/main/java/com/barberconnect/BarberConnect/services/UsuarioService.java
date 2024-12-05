@@ -75,7 +75,7 @@ public class UsuarioService implements IUsuarioService {
         );
     }
 
-    public Usuario SalvarUsuario(SignupRequestDTO novoUsuario){
+    private Usuario SalvarUsuario(SignupRequestDTO novoUsuario){
         UserDetails checkEmail = _usuarioRepo.findByEmail(novoUsuario.email());
         if(checkEmail != null) {
             throw new IllegalArgumentException("Este email já está cadastrado no sistema.");

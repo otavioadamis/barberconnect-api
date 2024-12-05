@@ -3,6 +3,7 @@ package com.barberconnect.BarberConnect.api.Controller;
 import com.barberconnect.BarberConnect.domain.Entities.Reserva;
 import com.barberconnect.BarberConnect.domain.Interfaces.IReservaService;
 import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Request.CreateReservaRequest;
+import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Response.ReservaCard;
 import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Response.ReservaResponse;
 import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Response.ReservasOcupadasResponse;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -36,5 +37,10 @@ public class ReservaController {
                                                                                              @PathVariable LocalDate dia){
         List<ReservasOcupadasResponse> horarios = _reservaService.getHorariosReservadosByFuncionarioIdAndDia(dia, funcionarioId);
         return ResponseEntity.ok(horarios);
+    }
+
+    @GetMapping("/listar-reservas")
+    public ResponseEntity<List<ReservaCard>> listarReservasDoUsuario(){
+        return ResponseEntity.ok(_reservaService.listarReservas());
     }
 }

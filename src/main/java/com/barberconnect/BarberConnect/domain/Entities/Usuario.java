@@ -1,6 +1,7 @@
 package com.barberconnect.BarberConnect.domain.Entities;
 
 import com.barberconnect.BarberConnect.domain.Enums.Role;
+import com.barberconnect.BarberConnect.domain.TOs.GerenteTOs.Request.CreateFuncionarioRequest;
 import com.barberconnect.BarberConnect.domain.TOs.UsuarioTOs.Request.SignupRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,12 +35,23 @@ public class Usuario implements UserDetails {
     private Date criadoEm;
     @Enumerated(EnumType.STRING)
     private Role tipo = Role.ROLE_CLIENTE;
+    @OneToOne
+    @JoinColumn(name = "barbearia_id")
+    private Barbearia barbearia;
 
     public Usuario(SignupRequestDTO novoUsuario, String encodedPassword){
         nome = novoUsuario.nome();
         email = novoUsuario.email();
         senha = encodedPassword;
         contato = novoUsuario.contato();
+    }
+
+    public Usuario(CreateFuncionarioRequest novoUsuario, String encodedPassword, Barbearia barbearia){
+        nome = novoUsuario.nome();
+        email = novoUsuario.email();
+        senha = encodedPassword;
+        contato = novoUsuario.contato();
+        this.barbearia = barbearia;
     }
 
     @Override

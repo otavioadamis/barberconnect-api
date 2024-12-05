@@ -8,6 +8,7 @@ import com.barberconnect.BarberConnect.domain.Entities.Servico;
 import com.barberconnect.BarberConnect.domain.Entities.Usuario;
 import com.barberconnect.BarberConnect.domain.Interfaces.IReservaService;
 import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Request.CreateReservaRequest;
+import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Response.ReservaCard;
 import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Response.ReservaResponse;
 import com.barberconnect.BarberConnect.domain.TOs.ReservaTOs.Response.ReservasOcupadasResponse;
 import org.springframework.security.core.Authentication;
@@ -57,5 +58,13 @@ public class ReservaService implements IReservaService {
     public List<ReservasOcupadasResponse> getHorariosReservadosByFuncionarioIdAndDia(LocalDate dia, String funcionarioId){
         LocalDate endDate = dia.plusDays(1);
         return _reservaRepo.findReservasByFuncIdAndDia(funcionarioId, dia, endDate);
+    }
+
+    public List<ReservaCard> listarReservas(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String loggedInUserEmail = authentication.getName();
+        Usuario usuarioLogado = (Usuario) _userRepo.findByEmail(loggedInUserEmail);
+
+        return _reservaRepo.findAllReservasUser(usuarioLogado.getId());
     }
 }
